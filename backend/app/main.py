@@ -1,12 +1,23 @@
 from __future__ import annotations
 
+import os
+
 from fastapi import Depends, FastAPI, Header, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 
 from app.auth import create_token, hash_password, verify_token
 from app.database import connect, init_db
 from app.schemas import EventSummary, LoginRequest, LoginResponse, ShiftCoverage, StaffingSuggestion, UserOut, Volunteer
 
 app = FastAPI(title="MasjidFlow Ops API", version="0.1.0")
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[origin.strip() for origin in os.getenv("MASJIDFLOW_CORS_ORIGINS", "http://127.0.0.1:5173,http://localhost:5173").split(",")],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 @app.on_event("startup")
