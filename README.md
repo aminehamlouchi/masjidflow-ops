@@ -8,7 +8,7 @@ The app is built as a realistic portfolio project: React/TypeScript frontend, Fa
 
 Screenshot placeholders:
 
-- `docs/screenshots/dashboard.png` - event operations dashboard.
+- `docs/screenshots/dashboard-smoke.png` - event operations dashboard smoke test.
 - `docs/screenshots/coverage.png` - volunteer shift coverage view.
 - `docs/screenshots/suggestions.png` - staffing recommendation response.
 
