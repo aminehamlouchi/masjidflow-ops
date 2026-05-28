@@ -2,15 +2,11 @@
 
 MasjidFlow Ops is a full-stack operations dashboard for masjid and MSA events. It helps organizers see event health, RSVP counts, volunteer shift coverage, and staffing suggestions from one place.
 
-The app is built as a realistic portfolio project: React/TypeScript frontend, FastAPI backend, SQLite database, demo auth, tests, CI, Docker scaffolding, and sample data.
+The repo includes a React/TypeScript frontend, FastAPI backend, SQLite seed data, demo authentication, Docker setup, and backend tests.
 
-## Demo
+## Preview
 
-Screenshot placeholders:
-
-- `docs/screenshots/dashboard-smoke.png` - event operations dashboard smoke test.
-- `docs/screenshots/coverage.png` - volunteer shift coverage view.
-- `docs/screenshots/suggestions.png` - staffing recommendation response.
+![MasjidFlow dashboard](docs/screenshots/dashboard-smoke.png)
 
 Demo login:
 
@@ -75,7 +71,7 @@ The frontend expects the backend at `http://127.0.0.1:8001` by default.
 
 ## Docker
 
-Docker is included for deployment-ready structure:
+Run both services with Docker Compose:
 
 ```bash
 docker compose up --build
@@ -87,9 +83,15 @@ docker compose up --build
 - Frontend: Netlify, Vercel, or static hosting.
 - Database: SQLite for demo deployments; Postgres is the natural production upgrade.
 
-## CI Template
+## Testing
 
-The GitHub Actions workflow template is included at `docs/github-actions/ci.yml`. Move it to `.github/workflows/ci.yml` after authenticating GitHub CLI with the `workflow` scope.
+```bash
+cd backend
+pytest
+
+cd ../frontend
+npm run build
+```
 
 ## Roadmap
 
@@ -97,8 +99,4 @@ The GitHub Actions workflow template is included at `docs/github-actions/ci.yml`
 - Email/SMS reminders.
 - Role-based permissions for admin, organizer, and volunteer users.
 - Calendar export and recurring event templates.
-- Optional OpenAI planner that explains tradeoffs in the staffing recommendations.
-
-## Recruiter Notes
-
-This project demonstrates full-stack product execution, REST API design, auth, relational data modeling, React state management, deployment scaffolding, tests, and a real workflow from community operations.
+- Optional planner that explains tradeoffs in the staffing recommendations.
