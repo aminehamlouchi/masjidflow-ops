@@ -1,0 +1,22 @@
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "8001:8001"
+    environment:
+      MASJIDFLOW_DB_PATH: /app/data/masjidflow.db
+      MASJIDFLOW_SECRET: change-me-for-production
+    volumes:
+      - masjidflow-data:/app/data
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "5173:80"
+    environment:
+      VITE_API_URL: http://localhost:8001
+    depends_on:
+      - backend
+
+volumes:
+  masjidflow-data:
